@@ -1,0 +1,60 @@
+[33mcommit a20c5b5d24b2fa6c4e970e1a540056a271d0f649[m[33m ([m[1;36mHEAD -> [m[1;32m0db41bccbc93702148ea3004d232afb243f436bb[m[33m, [m[1;32mmain[m[33m)[m
+Author: hahaclassic <andreyka.steam@yandex.ru>
+Date:   Fri Jun 25 22:32:15 2021 +0300
+
+    added database
+
+[33mcommit a3f20d4cc9d45ab1d7751d951ce96bf25b978450[m[33m ([m[1;35mrefs/stash[m[33m)[m
+Merge: 0db41bc e4b6256
+Author: hahaclassic <andreyka.steam@yandex.ru>
+Date:   Thu Jun 24 23:09:38 2021 +0300
+
+    WIP on main: 0db41bc remove shit
+
+[33mcommit e4b6256c936ce3fc7c4f1cea526603db7339a9da[m
+Author: hahaclassic <andreyka.steam@yandex.ru>
+Date:   Thu Jun 24 23:09:38 2021 +0300
+
+    index on main: 0db41bc remove shit
+
+[33mcommit 0db41bccbc93702148ea3004d232afb243f436bb[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: hahaclassic <andreyka.steam@yandex.ru>
+Date:   Thu Jun 24 22:29:44 2021 +0300
+
+    remove shit
+
+[33mcommit c10eecfdfafb85626f5a38f959d925127e38ff4c[m
+Author: hahaclassic <andreyka.steam@yandex.ru>
+Date:   Thu Jun 24 19:31:52 2021 +0300
+
+    other stuff
+
+[33mcommit a27b6a5fea67d65e72935a396a7c14f8a89f486a[m
+Author: hahaclassic <andreyka.steam@yandex.ru>
+Date:   Thu Jun 24 18:55:06 2021 +0300
+
+    added datagridview design
+
+[33mcommit a5487dce6c372cf9526c68dee02ef3f810bfa644[m
+Author: hahaclassic <andreyka.steam@yandex.ru>
+Date:   Thu Jun 24 18:34:39 2021 +0300
+
+    fix loading screen switch form, added tips
+
+[33mcommit 27fac8fd0fde7b5a6330e18d6066f062255730d2[m
+Author: hahaclassic <andreyka.steam@yandex.ru>
+Date:   Thu Jun 24 17:19:05 2021 +0300
+
+    add loading screen, fix
+
+[33mcommit f7aa2700ff017519d62dffbee6a29a8518a6bd9f[m
+Author: hahaclassic <andreyka.steam@yandex.ru>
+Date:   Thu Jun 24 00:34:50 2021 +0300
+
+    add loading screen
+
+[33mcommit 36716db2067c6139de4d9ac627162f886a5bd6a4[m
+Author: hahaclassic <andreyka.steam@yandex.ru>
+Date:   Wed Jun 23 22:03:51 2021 +0300
+
+    add design
