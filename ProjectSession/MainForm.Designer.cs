@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.childFormPanel = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -68,6 +68,22 @@
             this.panel2.Size = new System.Drawing.Size(178, 407);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Location = new System.Drawing.Point(0, 70);
+            this.button3.Margin = new System.Windows.Forms.Padding(50);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(178, 35);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "Риэлторы";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -135,22 +151,6 @@
             this.label1.Size = new System.Drawing.Size(233, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Риэлторское агенство ";
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(0, 70);
-            this.button3.Margin = new System.Windows.Forms.Padding(50);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(178, 35);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Риэлторы";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // MainForm
             // 

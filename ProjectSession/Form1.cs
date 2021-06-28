@@ -25,6 +25,7 @@ namespace ProjectSession
 
             this.pair = p;
 
+
             label1.Font = new Font(f_manager.getFont(FontManager.FONT_TYPE.TEXT), 15);
             textBox1.Font = new Font(f_manager.getFont(FontManager.FONT_TYPE.TEXT), 15);
             button1.Font = new Font(f_manager.getFont(FontManager.FONT_TYPE.TEXT), 15);
@@ -89,6 +90,7 @@ namespace ProjectSession
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            new DataGridViewComboBoxColumn();
 
         }
 
@@ -103,13 +105,13 @@ namespace ProjectSession
             DataRow[] filteredRows = table.Rows
                    .Cast<DataRow>()
                    .Where((row) => {
-                       
+
                        bool allow = false;
 
-                       foreach(object i in row.ItemArray)
+                       foreach (object i in row.ItemArray)
                        {
                            string item = i.ToString().ToLower();
-                           if(item.IsInLevDistanceOf(keyword, 3))
+                           if (item.IsInLevDistanceOf(keyword, 3))
                            {
                                allow = true;
                                break;
@@ -136,5 +138,34 @@ namespace ProjectSession
             DataTable dt = SearchInAllColums(pair.Database, textBox1.Text, StringComparison.OrdinalIgnoreCase);
             dataGridView1.DataSource = dt;
         }
+
+        private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
+        {
+            DataTable table = pair.Database;
+            foreach (DataRelation relation in table.ParentRelations)
+            {
+                var oldColumn = dataGridView1.Columns[relation.ChildColumns[0].ColumnName];
+                var newColumn = GenerateComboBoxColumn(relation);
+
+                var index = dataGridView1.Columns.IndexOf(oldColumn);
+                dataGridView1.Columns.RemoveAt(index);
+                dataGridView1.Columns.Add(newColumn);
+                newColumn.DisplayIndex = index;
+            }
+        }
+
+        private DataGridViewComboBoxColumn GenerateComboBoxColumn(DataRelation relation)
+        {
+            string childColumn = relation.ChildColumns[0].ColumnName;
+            string parentColumn = relation.ParentColumns[0].ColumnName;
+
+            DataGridViewComboBoxColumn column = new DataGridViewComboBoxColumn();
+            column.HeaderText = childColumn;
+            column.DataSource = relation.ParentTable;
+            column.DisplayMember = relation.ParentTable.Columns[1].ColumnName;
+            column.ValueMember = relation.ParentTable.Columns[0].ColumnName;
+            return column;
+        }
+
     }
 }

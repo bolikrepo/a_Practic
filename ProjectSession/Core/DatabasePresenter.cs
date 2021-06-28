@@ -67,7 +67,7 @@ namespace ProjectSession
             //    {
             //        if (TableAdapter.SelectCommand == null)
             //        {
-            //            TableAdapter.SelectCommand = new SqlCommand($"SELECT * FROM {TableName} INNER JOIN {TableJoinName} ON {TableName}.Id = {TableJoinName}.ID", TableAdapter.UpdateCommand.Connection);
+            //            TableAdapter.SelectCommand = new SqlCommand($"SELECT * FROM {TableName} LEFT JOIN {TableJoinName} ON {TableName}.Id = {TableJoinName}.ID", TableAdapter.UpdateCommand.Connection);
             //        }
             //    }
             //    else
@@ -95,7 +95,7 @@ namespace ProjectSession
                 {
                     TableAdapter.SelectCommand = new SqlCommand($"SELECT * FROM {TableName}", TableAdapter.UpdateCommand.Connection);
                 }
-                
+
                 try
                 {
                     TableAdapter.Fill(Database);
