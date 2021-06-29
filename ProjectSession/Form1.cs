@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DatabaseStore;
 using ProjectSession.Core;
 
 
@@ -18,20 +19,19 @@ namespace ProjectSession
     {
         private FontManager f_manager = FontManager.GetInstance();
 
-        DatabaseAdapterPair pair = null;
+        DatabaseAdapterPair source = null;
         public Form1(DatabaseAdapterPair p)
         {
             InitializeComponent();
 
-            this.pair = p;
-
+            this.source = p;
 
             label1.Font = new Font(f_manager.getFont(FontManager.FONT_TYPE.TEXT), 15);
             textBox1.Font = new Font(f_manager.getFont(FontManager.FONT_TYPE.TEXT), 15);
-            button1.Font = new Font(f_manager.getFont(FontManager.FONT_TYPE.TEXT), 15);
-
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.DefaultCellStyle.Font = new Font(f_manager.getFont(FontManager.FONT_TYPE.MENU), 15);
-            this.dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(f_manager.getFont(FontManager.FONT_TYPE.TEXT), 13);
+            this.dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(f_manager.getFont(FontManager.FONT_TYPE.MENU), 13);
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -59,39 +59,31 @@ namespace ProjectSession
             button2.FlatStyle = FlatStyle.Flat;
             button2.FlatAppearance.BorderSize = 0;
 
-            try
-            {
-                pair.Fill();
-
-                dataGridView1.DataSource = pair.Database;
-            }
-            catch
-            {
-
-                pair.Fill();
-
-                dataGridView1.DataSource = pair.Database;
-
-            }
+            dataGridView1.DataSource = source.Table;
+            source.Fill();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             try
             {
-                pair.Update();
+                dataGridView1.EndEdit();
+                source.Update();
                 MessageManager.showInfo("Обновление данных", "Данные успешно обновлены");
             }
-            catch
+            catch (Exception err)
             {
-                MessageManager.showError("Произошла ошибка", "Для просмотра кода ошибки \n приобретите PRO-версию");
+                MessageManager.showError("Ошибка обновления данных", err.ToString());
             }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            new DataGridViewComboBoxColumn();
-
+            if (textBox1.Text.Length > 0)
+            {
+                DataTable dt = SearchInAllColums(source.Table, textBox1.Text, StringComparison.OrdinalIgnoreCase);
+                dataGridView1.DataSource = dt;
+            }
         }
 
         public static DataTable SearchInAllColums(DataTable table, string keyword, StringComparison comparison)
@@ -134,38 +126,13 @@ namespace ProjectSession
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            DataTable dt = SearchInAllColums(pair.Database, textBox1.Text, StringComparison.OrdinalIgnoreCase);
-            dataGridView1.DataSource = dt;
+        { 
+
         }
 
-        private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataTable table = pair.Database;
-            foreach (DataRelation relation in table.ParentRelations)
-            {
-                var oldColumn = dataGridView1.Columns[relation.ChildColumns[0].ColumnName];
-                var newColumn = GenerateComboBoxColumn(relation);
 
-                var index = dataGridView1.Columns.IndexOf(oldColumn);
-                dataGridView1.Columns.RemoveAt(index);
-                dataGridView1.Columns.Add(newColumn);
-                newColumn.DisplayIndex = index;
-            }
         }
-
-        private DataGridViewComboBoxColumn GenerateComboBoxColumn(DataRelation relation)
-        {
-            string childColumn = relation.ChildColumns[0].ColumnName;
-            string parentColumn = relation.ParentColumns[0].ColumnName;
-
-            DataGridViewComboBoxColumn column = new DataGridViewComboBoxColumn();
-            column.HeaderText = childColumn;
-            column.DataSource = relation.ParentTable;
-            column.DisplayMember = relation.ParentTable.Columns[1].ColumnName;
-            column.ValueMember = relation.ParentTable.Columns[0].ColumnName;
-            return column;
-        }
-
     }
 }

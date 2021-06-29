@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseStore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,36 +26,25 @@ namespace ProjectSession
             this.formSwitcher = new Core.FormSwitcher(childFormPanel);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void updateButtonStyle(Button bt)
         {
-            formSwitcher.switchForm(new Form1(DatabasePresenter.PersonSet));
-            label1.Text = "Общий список людей агенства";
-
-            if (lastButton != null)
-            {
-                lastButton.BackColor = Color.FromArgb(112, 111, +211);
-            }
-
-            button1.BackColor = Color.FromArgb(52, 172, 224);
-
-            lastButton = (Button)sender;
-
+            bt.TabStop = false;
+            bt.FlatStyle = FlatStyle.Flat;
+            bt.FlatAppearance.BorderSize = 0;
         }
-
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            button1.TabStop = false;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.FlatAppearance.BorderSize = 0;
 
-            button2.TabStop = false;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.FlatAppearance.BorderSize = 0;
+            updateButtonStyle(button2);
+            updateButtonStyle(button3);
+            updateButtonStyle(apartments_button);
+            updateButtonStyle(houses_button);
+            updateButtonStyle(lands_button);
 
-            button3.TabStop = false;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.FlatAppearance.BorderSize = 0;
+
+
+
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -73,7 +63,7 @@ namespace ProjectSession
 
             lastButton = (Button)sender;
 
-            formSwitcher.switchForm(new Form1(DatabasePresenter.PersonSet_Client));
+            formSwitcher.switchForm(new Form1(DatatablesStore.Clients));
 
             label1.Text = "Список клиентов агенства";
         }
@@ -89,9 +79,57 @@ namespace ProjectSession
 
             lastButton = (Button)sender;
 
-            formSwitcher.switchForm(new Form1(DatabasePresenter.PersonSet_Agent));
+            formSwitcher.switchForm(new Form1(DatatablesStore.Agents));
 
             label1.Text = "Список риэлторов агенства";
+        }
+
+        private void apartments_button_Click(object sender, EventArgs e)
+        {
+            if (lastButton != null)
+            {
+                lastButton.BackColor = Color.FromArgb(112, 111, +211);
+            }
+
+            apartments_button.BackColor = Color.FromArgb(52, 172, 224);
+
+            lastButton = (Button)sender;
+
+            formSwitcher.switchForm(new Form1(DatatablesStore.Apartment));
+
+            label1.Text = "Список квартир";
+        }
+
+        private void houses_button_Click(object sender, EventArgs e)
+        {
+            if (lastButton != null)
+            {
+                lastButton.BackColor = Color.FromArgb(112, 111, +211);
+            }
+
+            houses_button.BackColor = Color.FromArgb(52, 172, 224);
+
+            lastButton = (Button)sender;
+
+            formSwitcher.switchForm(new Form1(DatatablesStore.House));
+
+            label1.Text = "Список домов";
+        }
+
+        private void lands_button_Click(object sender, EventArgs e)
+        {
+            if (lastButton != null)
+            {
+                lastButton.BackColor = Color.FromArgb(112, 111, +211);
+            }
+
+            lands_button.BackColor = Color.FromArgb(52, 172, 224);
+
+            lastButton = (Button)sender;
+
+            formSwitcher.switchForm(new Form1(DatatablesStore.Land));
+
+            label1.Text = "Список земельных участков";
         }
     }
 }

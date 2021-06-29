@@ -33,11 +33,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.childFormPanel = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.apartments_button = new System.Windows.Forms.Button();
+            this.houses_button = new System.Windows.Forms.Button();
+            this.lands_button = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -59,9 +61,11 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(122)))));
+            this.panel2.Controls.Add(this.lands_button);
+            this.panel2.Controls.Add(this.houses_button);
+            this.panel2.Controls.Add(this.apartments_button);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
             this.panel2.ForeColor = System.Drawing.Color.Coral;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -76,7 +80,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(0, 70);
+            this.button3.Location = new System.Drawing.Point(0, 35);
             this.button3.Margin = new System.Windows.Forms.Padding(50);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(178, 35);
@@ -92,7 +96,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(0, 35);
+            this.button2.Location = new System.Drawing.Point(0, 0);
             this.button2.Margin = new System.Windows.Forms.Padding(50);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(178, 35);
@@ -100,22 +104,6 @@
             this.button2.Text = "Клиенты";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 50, 3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(178, 35);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Люди";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // childFormPanel
             // 
@@ -152,6 +140,54 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Риэлторское агенство ";
             // 
+            // apartments_button
+            // 
+            this.apartments_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.apartments_button.Dock = System.Windows.Forms.DockStyle.Top;
+            this.apartments_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.apartments_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.apartments_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.apartments_button.Location = new System.Drawing.Point(0, 70);
+            this.apartments_button.Margin = new System.Windows.Forms.Padding(50);
+            this.apartments_button.Name = "apartments_button";
+            this.apartments_button.Size = new System.Drawing.Size(178, 35);
+            this.apartments_button.TabIndex = 3;
+            this.apartments_button.Text = "Квартиры";
+            this.apartments_button.UseVisualStyleBackColor = false;
+            this.apartments_button.Click += new System.EventHandler(this.apartments_button_Click);
+            // 
+            // houses_button
+            // 
+            this.houses_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.houses_button.Dock = System.Windows.Forms.DockStyle.Top;
+            this.houses_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.houses_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.houses_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.houses_button.Location = new System.Drawing.Point(0, 105);
+            this.houses_button.Margin = new System.Windows.Forms.Padding(50);
+            this.houses_button.Name = "houses_button";
+            this.houses_button.Size = new System.Drawing.Size(178, 35);
+            this.houses_button.TabIndex = 4;
+            this.houses_button.Text = "Дома";
+            this.houses_button.UseVisualStyleBackColor = false;
+            this.houses_button.Click += new System.EventHandler(this.houses_button_Click);
+            // 
+            // lands_button
+            // 
+            this.lands_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.lands_button.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lands_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lands_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lands_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lands_button.Location = new System.Drawing.Point(0, 140);
+            this.lands_button.Margin = new System.Windows.Forms.Padding(50);
+            this.lands_button.Name = "lands_button";
+            this.lands_button.Size = new System.Drawing.Size(178, 35);
+            this.lands_button.TabIndex = 5;
+            this.lands_button.Text = "Участки";
+            this.lands_button.UseVisualStyleBackColor = false;
+            this.lands_button.Click += new System.EventHandler(this.lands_button_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,10 +218,12 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel childFormPanel;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button lands_button;
+        private System.Windows.Forms.Button houses_button;
+        private System.Windows.Forms.Button apartments_button;
     }
 }
