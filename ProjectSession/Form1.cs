@@ -21,12 +21,22 @@ namespace ProjectSession
 
         DatabaseAdapterPair source = null;
 
-        private string tableName = null; 
+        private string rowName = null; 
         
-        public Form1(DatabaseAdapterPair p, string tableName)
+        public Form1(DatabaseAdapterPair p, string specificRowName)
         {
+            InitializeComponent();
+
             this.source = p;
-            this.tableName = tableName;
+            this.rowName = specificRowName;
+
+            label1.Font = new Font(f_manager.getFont(FontManager.FONT_TYPE.TEXT), 15);
+            textBox1.Font = new Font(f_manager.getFont(FontManager.FONT_TYPE.TEXT), 15);
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.DefaultCellStyle.Font = new Font(f_manager.getFont(FontManager.FONT_TYPE.MENU), 15);
+            this.dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(f_manager.getFont(FontManager.FONT_TYPE.MENU), 13);
+
         }
 
         public Form1(DatabaseAdapterPair p)
@@ -52,13 +62,6 @@ namespace ProjectSession
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            var records = new DatabaseReader("Data Source=\"192.168.102.242, 1433\";Initial Catalog=RealEstateAgency;Persist Security Info=True;User ID=ADM;Password=Samsung123").SqlQuery<Client>("select * from Clients_Name_ID");
-
-            foreach (Client record in records)
-            {
-                Console.WriteLine(record.FirstName);
-            }
-
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
@@ -77,6 +80,22 @@ namespace ProjectSession
 
             dataGridView1.DataSource = source.Table;
             source.Fill();
+
+            if (this.rowName != null)
+            {
+                dataGridView1.Columns.Remove(rowName);
+
+                var records = new DatabaseReader("Data Source=\"192.168.102.242, 1433\";Initial Catalog=RealEstateAgency;Persist Security Info=True;User ID=ADM;Password=Samsung123").SqlQuery<Client>("select * from Clients_Name_ID");
+
+                DataGridViewComboBoxColumn dgvCmb = new DataGridViewComboBoxColumn();
+
+                foreach (Client client in records)
+                {
+                    dgvCmb.HeaderText = "Agent";
+                    dgvCmb.Items.Add(client.FirstName + " "+client.MiddleName) ;
+                }
+                dataGridView1.Columns.Add(dgvCmb);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

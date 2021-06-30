@@ -144,7 +144,7 @@ namespace ProjectSession
 
             lastButton = (Button)sender;
 
-            formSwitcher.switchForm(new Form1(DatatablesStore.SupplySet));
+            formSwitcher.switchForm(new Form1(DatatablesStore.SupplySet, "AgentId"));
 
             label1.Text = "Список предложений";
         }
