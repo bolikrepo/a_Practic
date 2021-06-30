@@ -41,6 +41,7 @@ namespace ProjectSession
             updateButtonStyle(apartments_button);
             updateButtonStyle(houses_button);
             updateButtonStyle(lands_button);
+            updateButtonStyle(supplyset_button);
 
 
 
@@ -130,6 +131,22 @@ namespace ProjectSession
             formSwitcher.switchForm(new Form1(DatatablesStore.Land));
 
             label1.Text = "Список земельных участков";
+        }
+
+        private void supplyset_button_Click(object sender, EventArgs e)
+        {
+            if (lastButton != null)
+            {
+                lastButton.BackColor = Color.FromArgb(112, 111, +211);
+            }
+
+            supplyset_button.BackColor = Color.FromArgb(52, 172, 224);
+
+            lastButton = (Button)sender;
+
+            formSwitcher.switchForm(new Form1(DatatablesStore.SupplySet));
+
+            label1.Text = "Список предложений";
         }
     }
 }

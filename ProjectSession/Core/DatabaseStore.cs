@@ -37,6 +37,10 @@ namespace DatabaseStore
                 var land = new RES_Land_ViewTableAdapter();
                 Land = new DatabaseAdapterPair
                     ("RES_Land_View", land.Connection, land.Adapter, Database.RES_Land_View);
+
+                var supplySet = new SupplySetTableAdapter();
+                SupplySet = new DatabaseAdapterPair
+                    ("SupplySet", supplySet.Connection, supplySet.Adapter, Database.SupplySet);
             }
             catch
             {
@@ -50,6 +54,7 @@ namespace DatabaseStore
         public static DatabaseAdapterPair Apartment { get; private set; }
         public static DatabaseAdapterPair House { get; private set; }
         public static DatabaseAdapterPair Land { get; private set; }
+        public static DatabaseAdapterPair SupplySet { get; private set; }
 
     }
 }

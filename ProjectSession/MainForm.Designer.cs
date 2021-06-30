@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lands_button = new System.Windows.Forms.Button();
+            this.houses_button = new System.Windows.Forms.Button();
+            this.apartments_button = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.childFormPanel = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.apartments_button = new System.Windows.Forms.Button();
-            this.houses_button = new System.Windows.Forms.Button();
-            this.lands_button = new System.Windows.Forms.Button();
+            this.supplyset_button = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -61,6 +63,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(122)))));
+            this.panel2.Controls.Add(this.supplyset_button);
             this.panel2.Controls.Add(this.lands_button);
             this.panel2.Controls.Add(this.houses_button);
             this.panel2.Controls.Add(this.apartments_button);
@@ -72,6 +75,54 @@
             this.panel2.Size = new System.Drawing.Size(178, 407);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // lands_button
+            // 
+            this.lands_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.lands_button.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lands_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lands_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lands_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lands_button.Location = new System.Drawing.Point(0, 140);
+            this.lands_button.Margin = new System.Windows.Forms.Padding(50);
+            this.lands_button.Name = "lands_button";
+            this.lands_button.Size = new System.Drawing.Size(178, 35);
+            this.lands_button.TabIndex = 5;
+            this.lands_button.Text = "Участки";
+            this.lands_button.UseVisualStyleBackColor = false;
+            this.lands_button.Click += new System.EventHandler(this.lands_button_Click);
+            // 
+            // houses_button
+            // 
+            this.houses_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.houses_button.Dock = System.Windows.Forms.DockStyle.Top;
+            this.houses_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.houses_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.houses_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.houses_button.Location = new System.Drawing.Point(0, 105);
+            this.houses_button.Margin = new System.Windows.Forms.Padding(50);
+            this.houses_button.Name = "houses_button";
+            this.houses_button.Size = new System.Drawing.Size(178, 35);
+            this.houses_button.TabIndex = 4;
+            this.houses_button.Text = "Дома";
+            this.houses_button.UseVisualStyleBackColor = false;
+            this.houses_button.Click += new System.EventHandler(this.houses_button_Click);
+            // 
+            // apartments_button
+            // 
+            this.apartments_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.apartments_button.Dock = System.Windows.Forms.DockStyle.Top;
+            this.apartments_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.apartments_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.apartments_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.apartments_button.Location = new System.Drawing.Point(0, 70);
+            this.apartments_button.Margin = new System.Windows.Forms.Padding(50);
+            this.apartments_button.Name = "apartments_button";
+            this.apartments_button.Size = new System.Drawing.Size(178, 35);
+            this.apartments_button.TabIndex = 3;
+            this.apartments_button.Text = "Квартиры";
+            this.apartments_button.UseVisualStyleBackColor = false;
+            this.apartments_button.Click += new System.EventHandler(this.apartments_button_Click);
             // 
             // button3
             // 
@@ -140,53 +191,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Риэлторское агенство ";
             // 
-            // apartments_button
+            // supplyset_button
             // 
-            this.apartments_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
-            this.apartments_button.Dock = System.Windows.Forms.DockStyle.Top;
-            this.apartments_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.apartments_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.apartments_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.apartments_button.Location = new System.Drawing.Point(0, 70);
-            this.apartments_button.Margin = new System.Windows.Forms.Padding(50);
-            this.apartments_button.Name = "apartments_button";
-            this.apartments_button.Size = new System.Drawing.Size(178, 35);
-            this.apartments_button.TabIndex = 3;
-            this.apartments_button.Text = "Квартиры";
-            this.apartments_button.UseVisualStyleBackColor = false;
-            this.apartments_button.Click += new System.EventHandler(this.apartments_button_Click);
-            // 
-            // houses_button
-            // 
-            this.houses_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
-            this.houses_button.Dock = System.Windows.Forms.DockStyle.Top;
-            this.houses_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.houses_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.houses_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.houses_button.Location = new System.Drawing.Point(0, 105);
-            this.houses_button.Margin = new System.Windows.Forms.Padding(50);
-            this.houses_button.Name = "houses_button";
-            this.houses_button.Size = new System.Drawing.Size(178, 35);
-            this.houses_button.TabIndex = 4;
-            this.houses_button.Text = "Дома";
-            this.houses_button.UseVisualStyleBackColor = false;
-            this.houses_button.Click += new System.EventHandler(this.houses_button_Click);
-            // 
-            // lands_button
-            // 
-            this.lands_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
-            this.lands_button.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lands_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lands_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lands_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lands_button.Location = new System.Drawing.Point(0, 140);
-            this.lands_button.Margin = new System.Windows.Forms.Padding(50);
-            this.lands_button.Name = "lands_button";
-            this.lands_button.Size = new System.Drawing.Size(178, 35);
-            this.lands_button.TabIndex = 5;
-            this.lands_button.Text = "Участки";
-            this.lands_button.UseVisualStyleBackColor = false;
-            this.lands_button.Click += new System.EventHandler(this.lands_button_Click);
+            this.supplyset_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.supplyset_button.Dock = System.Windows.Forms.DockStyle.Top;
+            this.supplyset_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.supplyset_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.supplyset_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.supplyset_button.Location = new System.Drawing.Point(0, 175);
+            this.supplyset_button.Margin = new System.Windows.Forms.Padding(50);
+            this.supplyset_button.Name = "supplyset_button";
+            this.supplyset_button.Size = new System.Drawing.Size(178, 35);
+            this.supplyset_button.TabIndex = 6;
+            this.supplyset_button.Text = "Предолжения";
+            this.supplyset_button.UseVisualStyleBackColor = false;
+            this.supplyset_button.Click += new System.EventHandler(this.supplyset_button_Click);
             // 
             // MainForm
             // 
@@ -199,10 +218,11 @@
             this.Controls.Add(this.childFormPanel);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Opacity = 0.97D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
+            this.Text = "Главное окно";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -225,5 +245,6 @@
         private System.Windows.Forms.Button lands_button;
         private System.Windows.Forms.Button houses_button;
         private System.Windows.Forms.Button apartments_button;
+        private System.Windows.Forms.Button supplyset_button;
     }
 }

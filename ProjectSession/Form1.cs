@@ -20,6 +20,15 @@ namespace ProjectSession
         private FontManager f_manager = FontManager.GetInstance();
 
         DatabaseAdapterPair source = null;
+
+        private string tableName = null; 
+        
+        public Form1(DatabaseAdapterPair p, string tableName)
+        {
+            this.source = p;
+            this.tableName = tableName;
+        }
+
         public Form1(DatabaseAdapterPair p)
         {
             InitializeComponent();
@@ -38,6 +47,7 @@ namespace ProjectSession
         {
 
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -93,7 +103,9 @@ namespace ProjectSession
             {
                 return table;
             }
+            
             keyword = keyword.ToLower();
+            
             DataRow[] filteredRows = table.Rows
                    .Cast<DataRow>()
                    .Where((row) => {
@@ -131,6 +143,11 @@ namespace ProjectSession
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
         {
 
         }
