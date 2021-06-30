@@ -56,5 +56,7 @@ namespace DatabaseStore
         public static DatabaseAdapterPair Land { get; private set; }
         public static DatabaseAdapterPair SupplySet { get; private set; }
 
+
+
     }
 }

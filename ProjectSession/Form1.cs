@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DatabaseStore;
 using ProjectSession.Core;
-
+using ProjectSession.DatabaseObjects;
 
 namespace ProjectSession
 {
@@ -52,6 +52,12 @@ namespace ProjectSession
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            var records = new DatabaseReader("Data Source=\"192.168.102.242, 1433\";Initial Catalog=RealEstateAgency;Persist Security Info=True;User ID=ADM;Password=Samsung123").SqlQuery<Client>("select * from Clients_Name_ID");
+
+            foreach (Client record in records)
+            {
+                Console.WriteLine(record.FirstName);
+            }
 
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);

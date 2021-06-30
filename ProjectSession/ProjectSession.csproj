@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Core\DatabaseAdapterPair.cs" />
     <Compile Include="Core\DatabaseAdapterPairBase.cs" />
+    <Compile Include="Core\DatabaseReader.cs" />
     <Compile Include="Core\DatabaseStore.cs" />
     <Compile Include="Core\FontManager.cs" />
     <Compile Include="Core\FormSwitcher.cs" />
@@ -81,6 +82,8 @@
     <Compile Include="Core\MessageManager.cs" />
     <Compile Include="Core\Settings.cs" />
     <Compile Include="Core\SqlCommandGenerator.cs" />
+    <Compile Include="DatabaseObjects\Agent.cs" />
+    <Compile Include="DatabaseObjects\Client.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
