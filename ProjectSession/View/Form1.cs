@@ -87,7 +87,6 @@ namespace ProjectSession
             }
             catch (Exception err)
             {
-                MessageManager.showError("Ошибка обновления данных", err.ToString());
             }
         }
 

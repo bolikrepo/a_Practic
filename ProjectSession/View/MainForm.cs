@@ -187,6 +187,9 @@ namespace ProjectSession
                     .Source(DataTablesStore.Demands)
                 .build()
             );
+
+            label1.Text = "Список потребностей";
+
         }
 
         private void dealSet_button_Click(object sender, EventArgs e)
@@ -207,6 +210,9 @@ namespace ProjectSession
                     .Source(DataTablesStore.Deals)
                 .build()
             );
+
+            label1.Text = "Список сделок";
+
         }
     }
 }
