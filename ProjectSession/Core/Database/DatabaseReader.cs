@@ -5,7 +5,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProjectSession.DatabaseObjects;
 
 namespace ProjectSession.Core
 {

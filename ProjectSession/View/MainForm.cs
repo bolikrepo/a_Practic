@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectSession
@@ -64,7 +61,9 @@ namespace ProjectSession
 
             lastButton = (Button)sender;
 
-            formSwitcher.switchForm(new Form1(DatatablesStore.Clients));
+            formSwitcher.switchForm(
+                Form1.New(DataTablesStore.Clients).build()
+            );
 
             label1.Text = "Список клиентов агенства";
         }
@@ -80,7 +79,9 @@ namespace ProjectSession
 
             lastButton = (Button)sender;
 
-            formSwitcher.switchForm(new Form1(DatatablesStore.Agents));
+            formSwitcher.switchForm(
+                Form1.New(DataTablesStore.Agents).build()
+            );
 
             label1.Text = "Список риэлторов агенства";
         }
@@ -96,7 +97,9 @@ namespace ProjectSession
 
             lastButton = (Button)sender;
 
-            formSwitcher.switchForm(new Form1(DatatablesStore.Apartment));
+            formSwitcher.switchForm(
+                Form1.New(DataTablesStore.Apartment).build()
+            );
 
             label1.Text = "Список квартир";
         }
@@ -112,7 +115,9 @@ namespace ProjectSession
 
             lastButton = (Button)sender;
 
-            formSwitcher.switchForm(new Form1(DatatablesStore.House));
+            formSwitcher.switchForm(
+                Form1.New(DataTablesStore.House).build()
+            );
 
             label1.Text = "Список домов";
         }
@@ -128,7 +133,9 @@ namespace ProjectSession
 
             lastButton = (Button)sender;
 
-            formSwitcher.switchForm(new Form1(DatatablesStore.Land));
+            formSwitcher.switchForm(
+                Form1.New(DataTablesStore.Land).build()
+            );
 
             label1.Text = "Список земельных участков";
         }
@@ -144,7 +151,31 @@ namespace ProjectSession
 
             lastButton = (Button)sender;
 
-            formSwitcher.switchForm(new Form1(DatatablesStore.SupplySet, "AgentId"));
+            formSwitcher.switchForm(
+                Form1.New()
+                    .DefineForeignKey(new FkDefinion("AgentId", DataTablesStore.FK_Agents, ("ID", "Preview")))
+                    .DefineForeignKey(new FkDefinion("ClientId", DataTablesStore.FK_Clients, ("ID", "Preview")))
+                    .DefineForeignKey(new FkDefinion("RealEstateId", DataTablesStore.FK_RealEstate, ("ID", "Preview")))
+                    .Source(DataTablesStore.Supplies)
+                .build()
+            );
+
+            /*
+              ДАЛЬШЕ САМ
+
+
+                DEMAND SET 
+            .DefineForeignKey(new FkDefinion("AgentId", DataTablesStore.FK_Agents, ("ID", "Preview")))
+            .DefineForeignKey(new FkDefinion("ClientId", DataTablesStore.FK_Clients, ("ID", "Preview")))
+            .DefineForeignKey(new FkDefinion("RealEstateFilter_Id", DataTablesStore.FK_RealEstateFilter, ("ID", "ID")))
+            .Source(DataTablesStore.Demands)
+             
+                DEAL SET
+            .DefineForeignKey(new FkDefinion("Demand_Id", DataTablesStore.Demands, ("Id", "Address_City")))
+            .DefineForeignKey(new FkDefinion("Supply_Id", DataTablesStore.Supplies, ("Id", "Id")))
+            .Source(DataTablesStore.Deals)
+
+             */
 
             label1.Text = "Список предложений";
         }

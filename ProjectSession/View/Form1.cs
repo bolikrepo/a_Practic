@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
-using System.Drawing.Text;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DatabaseStore;
 using ProjectSession.Core;
-using ProjectSession.DatabaseObjects;
 
 namespace ProjectSession
 {
@@ -20,15 +14,14 @@ namespace ProjectSession
         private FontManager f_manager = FontManager.GetInstance();
 
         DatabaseAdapterPair source = null;
+        DataTable tempStorage { get; set; } = null;
 
-        private string rowName = null; 
+        private List<FkDefinion> FkDefinions { get; } = new List<FkDefinion>();
         
-        public Form1(DatabaseAdapterPair p, string specificRowName)
+        public Form1()
         {
             InitializeComponent();
 
-            this.source = p;
-            this.rowName = specificRowName;
 
             label1.Font = new Font(f_manager.getFont(FontManager.FONT_TYPE.TEXT), 15);
             textBox1.Font = new Font(f_manager.getFont(FontManager.FONT_TYPE.TEXT), 15);
@@ -78,24 +71,10 @@ namespace ProjectSession
             button2.FlatStyle = FlatStyle.Flat;
             button2.FlatAppearance.BorderSize = 0;
 
-            dataGridView1.DataSource = source.Table;
+            tempStorage = source.Table;
+            dataGridView1.DataSource = tempStorage;
             source.Fill();
-
-            if (this.rowName != null)
-            {
-                dataGridView1.Columns.Remove(rowName);
-
-                var records = new DatabaseReader("Data Source=\"192.168.102.242, 1433\";Initial Catalog=RealEstateAgency;Persist Security Info=True;User ID=ADM;Password=Samsung123").SqlQuery<Client>("select * from Clients_Name_ID");
-
-                DataGridViewComboBoxColumn dgvCmb = new DataGridViewComboBoxColumn();
-
-                foreach (Client client in records)
-                {
-                    dgvCmb.HeaderText = "Agent";
-                    dgvCmb.Items.Add(client.FirstName + " "+client.MiddleName) ;
-                }
-                dataGridView1.Columns.Add(dgvCmb);
-            }
+            EnsureFKs();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -112,12 +91,15 @@ namespace ProjectSession
             }
         }
 
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (textBox1.Text.Length > 0)
             {
                 DataTable dt = SearchInAllColums(source.Table, textBox1.Text, StringComparison.OrdinalIgnoreCase);
-                dataGridView1.DataSource = dt;
+                tempStorage = dt;
+                dataGridView1.DataSource = tempStorage;
+                EnsureFKs();
             }
         }
 
@@ -162,19 +144,86 @@ namespace ProjectSession
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        { 
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
         {
-
+            
         }
+
+        public void EnsureFKs()
+        {
+            try
+            {
+                if (FkDefinions.Count != 0)
+                {
+                    foreach (DataGridViewColumn col in dataGridView1.Columns)
+                    {
+                        var defs = (from d in FkDefinions 
+                            where (d.TargetColumn.ToLower() == col.Name.ToLower()) select d);
+                        
+                        foreach (var def in defs)
+                        {
+                            InsertForeignKey(def, col); 
+                        }
+
+                    }
+                }
+            }
+            catch { EnsureFKs(); }
+        }
+
+        private void InsertForeignKey(FkDefinion def, DataGridViewColumn target)
+        {
+            try
+            {
+                def.Source.Fill();
+                DataGridViewColumnCollection parent = dataGridView1.Columns;
+                int index = parent.IndexOf(target);
+                //parent[parent.IndexOf(col)] = GenerateFKColumn(def);
+                parent.RemoveAt(index);
+                var col = GenerateFKColumn(def);
+                parent.Insert(index, col);
+            }
+            catch { InsertForeignKey(def, target); }
+        }
+
+        private DataGridViewColumn GenerateFKColumn(FkDefinion def)
+        {
+            DataGridViewComboBoxColumn column = new DataGridViewComboBoxColumn();
+
+            column.HeaderText = def.TargetColumn+"_FK";
+            column.DataPropertyName = def.TargetColumn;
+
+            column.DataSource = def.Source.Table;
+            column.DisplayMember = def.PreviewDisplayColumn;
+            column.ValueMember = def.PreviewOutputColumn;
+
+            return column;
+        }
+
+        public static Builder New() => new Builder();
+        public static Builder New(DatabaseAdapterPair source) => new Builder(source);
+        public class Builder
+        {
+            private readonly Form1 instance;
+            public Builder() { instance = new Form1(); }
+            public Builder(DatabaseAdapterPair source) 
+                { instance = new Form1(source); }
+
+            public Builder Source(DatabaseAdapterPair value)
+            {
+                instance.source = value;
+                return this;
+            }
+
+            public Builder DefineForeignKey(FkDefinion value)
+            {
+                instance.FkDefinions.Add(value);
+                return this;
+            }
+
+            public Form1 build() => instance;
+        }
+
     }
 }
