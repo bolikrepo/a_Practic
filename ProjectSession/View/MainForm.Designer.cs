@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dealSet_button = new System.Windows.Forms.Button();
+            this.demand_set_button = new System.Windows.Forms.Button();
+            this.supplyset_button = new System.Windows.Forms.Button();
             this.lands_button = new System.Windows.Forms.Button();
             this.houses_button = new System.Windows.Forms.Button();
             this.apartments_button = new System.Windows.Forms.Button();
@@ -41,7 +44,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.supplyset_button = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -63,6 +65,8 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(122)))));
+            this.panel2.Controls.Add(this.dealSet_button);
+            this.panel2.Controls.Add(this.demand_set_button);
             this.panel2.Controls.Add(this.supplyset_button);
             this.panel2.Controls.Add(this.lands_button);
             this.panel2.Controls.Add(this.houses_button);
@@ -75,6 +79,54 @@
             this.panel2.Size = new System.Drawing.Size(178, 407);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // dealSet_button
+            // 
+            this.dealSet_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.dealSet_button.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dealSet_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dealSet_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dealSet_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dealSet_button.Location = new System.Drawing.Point(0, 245);
+            this.dealSet_button.Margin = new System.Windows.Forms.Padding(50);
+            this.dealSet_button.Name = "dealSet_button";
+            this.dealSet_button.Size = new System.Drawing.Size(178, 35);
+            this.dealSet_button.TabIndex = 8;
+            this.dealSet_button.Text = "Сделки";
+            this.dealSet_button.UseVisualStyleBackColor = false;
+            this.dealSet_button.Click += new System.EventHandler(this.dealSet_button_Click);
+            // 
+            // demand_set_button
+            // 
+            this.demand_set_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.demand_set_button.Dock = System.Windows.Forms.DockStyle.Top;
+            this.demand_set_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.demand_set_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.demand_set_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.demand_set_button.Location = new System.Drawing.Point(0, 210);
+            this.demand_set_button.Margin = new System.Windows.Forms.Padding(50);
+            this.demand_set_button.Name = "demand_set_button";
+            this.demand_set_button.Size = new System.Drawing.Size(178, 35);
+            this.demand_set_button.TabIndex = 7;
+            this.demand_set_button.Text = "Потребность";
+            this.demand_set_button.UseVisualStyleBackColor = false;
+            this.demand_set_button.Click += new System.EventHandler(this.demand_set_button_Click);
+            // 
+            // supplyset_button
+            // 
+            this.supplyset_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
+            this.supplyset_button.Dock = System.Windows.Forms.DockStyle.Top;
+            this.supplyset_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.supplyset_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.supplyset_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.supplyset_button.Location = new System.Drawing.Point(0, 175);
+            this.supplyset_button.Margin = new System.Windows.Forms.Padding(50);
+            this.supplyset_button.Name = "supplyset_button";
+            this.supplyset_button.Size = new System.Drawing.Size(178, 35);
+            this.supplyset_button.TabIndex = 6;
+            this.supplyset_button.Text = "Предолжения";
+            this.supplyset_button.UseVisualStyleBackColor = false;
+            this.supplyset_button.Click += new System.EventHandler(this.supplyset_button_Click);
             // 
             // lands_button
             // 
@@ -177,6 +229,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1055, 36);
             this.panel3.TabIndex = 2;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // label1
             // 
@@ -190,22 +243,6 @@
             this.label1.Size = new System.Drawing.Size(233, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Риэлторское агенство ";
-            // 
-            // supplyset_button
-            // 
-            this.supplyset_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(111)))), ((int)(((byte)(211)))));
-            this.supplyset_button.Dock = System.Windows.Forms.DockStyle.Top;
-            this.supplyset_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.supplyset_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.supplyset_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.supplyset_button.Location = new System.Drawing.Point(0, 175);
-            this.supplyset_button.Margin = new System.Windows.Forms.Padding(50);
-            this.supplyset_button.Name = "supplyset_button";
-            this.supplyset_button.Size = new System.Drawing.Size(178, 35);
-            this.supplyset_button.TabIndex = 6;
-            this.supplyset_button.Text = "Предолжения";
-            this.supplyset_button.UseVisualStyleBackColor = false;
-            this.supplyset_button.Click += new System.EventHandler(this.supplyset_button_Click);
             // 
             // MainForm
             // 
@@ -246,5 +283,7 @@
         private System.Windows.Forms.Button houses_button;
         private System.Windows.Forms.Button apartments_button;
         private System.Windows.Forms.Button supplyset_button;
+        private System.Windows.Forms.Button demand_set_button;
+        private System.Windows.Forms.Button dealSet_button;
     }
 }

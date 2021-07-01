@@ -39,9 +39,9 @@ namespace ProjectSession
             updateButtonStyle(houses_button);
             updateButtonStyle(lands_button);
             updateButtonStyle(supplyset_button);
-
-
-
+            updateButtonStyle(demand_set_button);
+            updateButtonStyle(dealSet_button);
+           
 
         }
 
@@ -160,24 +160,53 @@ namespace ProjectSession
                 .build()
             );
 
-            /*
-              ДАЛЬШЕ САМ
-
-
-                DEMAND SET 
-            .DefineForeignKey(new FkDefinion("AgentId", DataTablesStore.FK_Agents, ("ID", "Preview")))
-            .DefineForeignKey(new FkDefinion("ClientId", DataTablesStore.FK_Clients, ("ID", "Preview")))
-            .DefineForeignKey(new FkDefinion("RealEstateFilter_Id", DataTablesStore.FK_RealEstateFilter, ("ID", "ID")))
-            .Source(DataTablesStore.Demands)
-             
-                DEAL SET
-            .DefineForeignKey(new FkDefinion("Demand_Id", DataTablesStore.Demands, ("Id", "Address_City")))
-            .DefineForeignKey(new FkDefinion("Supply_Id", DataTablesStore.Supplies, ("Id", "Id")))
-            .Source(DataTablesStore.Deals)
-
-             */
-
             label1.Text = "Список предложений";
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void demand_set_button_Click(object sender, EventArgs e)
+        {
+            if (lastButton != null)
+            {
+                lastButton.BackColor = Color.FromArgb(112, 111, +211);
+            }
+
+            demand_set_button.BackColor = Color.FromArgb(52, 172, 224);
+
+            lastButton = (Button)sender;
+
+            formSwitcher.switchForm(
+                Form1.New()
+                    .DefineForeignKey(new FkDefinion("AgentId", DataTablesStore.FK_Agents, ("ID", "Preview")))
+                    .DefineForeignKey(new FkDefinion("ClientId", DataTablesStore.FK_Clients, ("ID", "Preview")))
+                    .DefineForeignKey(new FkDefinion("RealEstateFilter_Id", DataTablesStore.FK_RealEstateFilter, ("ID", "ID")))
+                    .Source(DataTablesStore.Demands)
+                .build()
+            );
+        }
+
+        private void dealSet_button_Click(object sender, EventArgs e)
+        {
+            if (lastButton != null)
+            {
+                lastButton.BackColor = Color.FromArgb(112, 111, +211);
+            }
+
+            dealSet_button.BackColor = Color.FromArgb(52, 172, 224);
+
+            lastButton = (Button)sender;
+
+            formSwitcher.switchForm(
+                Form1.New()
+                    .DefineForeignKey(new FkDefinion("Demand_Id", DataTablesStore.Demands, ("Id", "Address_City")))
+                    .DefineForeignKey(new FkDefinion("Supply_Id", DataTablesStore.Supplies, ("Id", "Id")))
+                    .Source(DataTablesStore.Deals)
+                .build()
+            );
         }
     }
 }
